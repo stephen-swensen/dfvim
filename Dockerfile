@@ -33,8 +33,13 @@ RUN apt-get update -y && \
 RUN apt-get install -yq vim man less ctags wget curl git subversion ssh-client && \
     apt-get clean
 
-WORKDIR /root
+RUN useradd --shell /bin/bash -u 1000 -o -c "" -m dfvim
+RUN mkdir /src && chown dfvim /src/ -R
+USER dfvim
+
+WORKDIR /home/dfvim
 COPY .bashrc .
 COPY .vimrc .
+
 WORKDIR /src
 CMD ["/bin/bash"]
