@@ -13,3 +13,9 @@ Execute `./run.sh` to start the container with the current directory mounted.
 Notes
 
 - Dockerfile creates a user `dfvim` with uid 1000 for use in the running container. If your host uid is 1000 also then file permissions will align (good!), if not then you may have mismatch permission issues (bad!).
+- Installs various vim plugins using vim-plug, see .vimrc
+
+TODO
+
+- Use NeoVim instead of regular vim
+- 
