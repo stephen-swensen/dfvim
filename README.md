@@ -9,3 +9,7 @@ Dockerfile is based on the F# 4.1.25 version of the official mono F# Dockerfile:
 Build the image using `./build.sh`
 
 Execute `./run.sh` to start the container with the current directory mounted.
+
+Notes
+
+- Dockerfile creates a user `dfvim` with uid 1000 for use in the running container. If your host uid is 1000 also then file permissions will align (good!), if not then you may have mismatch permission issues (bad!).
