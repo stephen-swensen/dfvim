@@ -28,18 +28,27 @@ RUN MONO_VERSION=5.0.1.1 && \
     apt-get purge -y autoconf libtool make automake && \
     apt-get clean
 
-RUN apt-get update -y && \
-    apt-get install -yq apt-utils 
-RUN apt-get install -yq vim man less ctags wget curl git subversion ssh-client && \
-    apt-get clean
+# install some additional dev tools desired or required
+RUN apt-get update -y 
+RUN apt-get install -yq apt-utils 
+# we install vim-python-jedi instead of just vim to get python env required fsharp-vim plugin
+RUN apt-get install -yq vim-python-jedi man less ctags wget curl git subversion ssh-client 
+RUN apt-get install -yq make unzip
 
+# set up dfvim user with uid 1000 to (hopefully) match host uid
 RUN useradd --shell /bin/bash -u 1000 -o -c "" -m dfvim
 RUN mkdir /src && chown dfvim /src/ -R
 USER dfvim
 
+# set .bashrc and .vimrc (not .vimrc sets up fsharp-vim plugin using vim-plug system))
 WORKDIR /home/dfvim
 COPY .bashrc .
 COPY .vimrc .
+
+# install vim-plug and run setup 
+RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+RUN vim +PlugInstall +qall
 
 WORKDIR /src
 CMD ["/bin/bash"]

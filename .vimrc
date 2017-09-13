@@ -23,3 +23,15 @@ endif
 " works for Konsole and iTerm2 only
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'vim-syntastic/syntastic'
+
+Plug 'fsharp/vim-fsharp', {
+      \ 'for': 'fsharp',
+      \ 'do':  'make fsautocomplete',
+      \}
+
+call plug#end()
+
