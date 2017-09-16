@@ -3,10 +3,9 @@ set shiftwidth=4    " Indents will have a width of 4
 set softtabstop=4   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
 
-set nu      " show line numbers
-set ruler   " show ruler
-
+set nu " show line numbers
 syntax on
+colorscheme delek
 
 " leave insert mode quickly on <Esc>
 " https://powerline.readthedocs.org/en/latest/tipstricks.html
@@ -24,7 +23,6 @@ endif
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
-colorscheme delek
 
 call plug#begin('~/.vim/plugged')
 
