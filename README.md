@@ -7,6 +7,8 @@ DockerHub: https://hub.docker.com/r/swensen/dfvim/
 
 Use `docker run -it -v $(pwd):/src swensen/dfvim:4.1.25` to mount the current directory inside a docker container optimized for F# vim development.
 
+See https://github.com/stephen-swensen/fsharp-tutorials for a tutorial based around `dfvim`.
+
 ## About
 
 Dockerfile is based on the F# 4.1.25 version of the official mono F# Dockerfile: https://github.com/fsprojects/docker-fsharp/tree/96cd7752113e7b4e32fbd6437600816f4b361994/4.1.25/mono with two main differences:
